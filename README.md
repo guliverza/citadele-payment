@@ -1,3 +1,3 @@
-Citadele testa uzdevums
+Citadele testa uzdevums.
 
 Andrejs Popovs.

@@ -1,28 +1,22 @@
 package com.guliverza;
 
-import java.util.Set;
-import java.util.stream.Collectors;
+import org.jboss.logging.Logger;
 
 import javax.inject.Inject;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
-import javax.validation.Valid;
-import javax.validation.Validator;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Path("/payment")
 public class PaymentResource {
-
-    @Inject
-    Validator validator;
+    private static final Logger log = Logger.getLogger(PaymentResource.class);
 
     @Inject
     PaymentService paymentService;
+
 
     @GET
     @Produces(MediaType.TEXT_PLAIN)
@@ -34,10 +28,11 @@ public class PaymentResource {
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Result tryMeServiceMethodValidation(Payment payment) {
+    public Result createPayment(Payment payment) {
+        log.debug("Received payment request");
         try {
-            paymentService.validateBook(payment);
-            return new Result("Book is valid! It was validated by service method validation.");
+            paymentService.doPayment(payment);
+            return new Result("Payment successfully accepted for execution!");
         } catch (ConstraintViolationException e) {
             return new Result(e.getConstraintViolations());
         }
@@ -45,8 +40,8 @@ public class PaymentResource {
 
     public static class Result {
 
-        private String message;
-        private boolean success;
+        private final String message;
+        private final boolean success;
 
         Result(String message) {
             this.success = true;

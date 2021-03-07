@@ -9,66 +9,110 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-default navbar-pf" role="navigation">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="/">
-                <p><strong>>> Citatele test payment!</strong></p>
-            </a>
-        </div>
-    </nav>
-    <div class="container-fluid">
-        <div class="row-fluid hidden" id="result">
+    <p><strong>>> Citadele test payment!</strong></p>
+    <form>
+        <div class="hidden" id="result">
             <br />
-            <div id="suc" class="col-md-6 col-md-offset-2 toast-pf alert alert-success">
+            <div id="suc" class="alert alert-success">
                 <span class="pficon pficon-ok"></span>
                 <p class="message"></p>
             </div>
-            <div id="err" class="col-md-6 col-md-offset-2 toast-pf alert alert-warning">
+            <div id="err" class="alert alert-warning">
                 <span class="pficon pficon-warning-triangle-o"></span>
                 <p class="message"></p>
             </div>
         </div>
 
-        <div class="row-fluid">
-            <br />
-            <form>
-                <div class="form-group row-fluid">
-                    <label for="title" class="col-sm-2 col-form-label">Title</label>
-                    <div class="col-sm-7">
-                        <input type="text" class="form-control" id="title" placeholder="Book title">
-                    </div>
-                    <div class=col-sm-2">
-                        <em>Must not be blank</em>
-                    </div>
-                </div>
-                <div class="form-group row-fluid">
-                    <label for="author" class="col-sm-2 col-form-label">Author</label>
-                    <div class="col-sm-7">
-                        <input type="text" class="form-control" id="author" placeholder="Book author">
-                    </div>
-                    <div class=col-sm-2">
-                        <em>Must not be blank</em>
-                    </div>
-                </div>
-                <div class="form-group row-fluid">
-                    <label for="page" class="col-sm-2 col-form-label">Number of pages</label>
-                    <div class="col-sm-7">
-                        <input type="number" class="form-control" id="pages" placeholder="Number of pages">
-                    </div>
-                    <div class=col-sm-2">
-                        <em>Must be positive</em>
-                    </div>
-                </div>
-                <div class="form-group row-fluid">
-                    <div class="col-sm-10">
-                        <button id="try-create-payment" type="button" class="btn btn-primary">Create payment</button>
+        <hr size="6" align="left" color="green"> <div> <h3><b>Payment order</b></h3> </div>
 
-                        <button id="clear" type="button" class="btn btn-danger">Reset</button>
-                    </div>
-                </div>
-            </form>
+        <label>Cust.num</label>
+        <input type="text" id="customerNum" placeholder="Cust. num">
+        <em>Must not be blank</em><br/>
+
+        <label>Date</label>
+        <input type="date" id="date" >
+        <em>Must not be blank or in past</em><br/>
+
+        <hr size="6" align="left" color="green"> <div><h3><b>Remitter</b></h3></div>
+
+        <label>Name, surname  / Company name</label>
+        <input type="text" id="senderName" placeholder="Name">
+        <em>Must not be blank</em><br/>
+
+        <label>Personal ID number / Registration No</label>
+        <input type="text" id="senderId" placeholder="Personal ID">
+        <em>Must not be blank</em><br/>
+
+        <label>Account No</label>
+        <input type="text" id="senderAccountNo" placeholder="Account No">
+        <em>Must not be blank</em><br/>
+
+        <hr size="6" align="left" color="green"> <div> <h3> <b> Beneficiary </b> </h3> </div>
+
+        <label>Name, surname / Company name</label>
+        <input type="text" id="benName" placeholder="Name">
+        <em>Must not be blank</em><br/>
+
+        <label>Personal ID number / Registration No</label>
+        <input type="text" id="benId" placeholder="Personal ID">
+        <em>Must not be blank</em><br/>
+
+        <label>Account No</label>
+        <input type="text" id="benAccountNo" placeholder="Account No">
+        <em>Must not be blank</em><br/>
+
+        <label>Residence Country</label>
+        <input type="text" id="benCountry" placeholder="country">
+        <em>Must not be blank</em><br/>
+
+        <label>Beneficiary bank</label>
+        <input type="text" id="benBank" placeholder="bank name">
+        <em>Must not be blank</em><br/>
+
+        <label>Bank code</label>
+        <input type="text" id="benBankCode" placeholder="bank code">
+        <em>Must not be blank</em><br/>
+
+        <hr size="6" align="left" color="green"> <div> <h3> <b> Payment information </b> </h3> </div>
+
+        <label>Amount in figures and currency</label>
+        <input type="number" id="amount" placeholder="amount">
+        <em>Must be positive</em><br/>
+
+        <label>Bank fee</label>
+        <input type="number" id="bankFee" placeholder="bank fee">
+        <em>Must be positive or zero</em><br/>
+
+        <label>Amount in word</label>
+        <input type="text" id="amountStr" placeholder="amount in words">
+        <em>Must not be blank</em><br/>
+
+        <label>Payment type</label>
+        <input type="text" id="paymentType" >
+        <em>Optional</em><br/>
+
+        <label>Exchange rate</label>
+        <input type="text" id="rate" placeholder="exchange rate">
+        <em>Must not be blank</em><br/>
+
+        <label>Value date</label>
+        <input type="date" id="valueDate" placeholder="exchange date">
+        <em>Must not be blank</em><br/>
+
+        <label>Code of external payment</label>
+        <input type="text" id="externalCode" placeholder="external code">
+        <em>Must not be blank</em><br/>
+
+        <label>Payment details</label>
+        <input type="text" id="details" placeholder="details">
+        <em>Must not be blank</em><br/>
+
+
+        <div>
+            <button id="try-create-payment" type="button">Create payment</button>
+            <button id="clear" type="button">Reset</button>
         </div>
-    </div>
+    </form>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -78,20 +122,33 @@
         $(document).ready(function () {
             $("#try-create-payment").click(function (e) {
                 e.preventDefault();
-                var pages = $("#pages").val();
-                var title = $("#title").val();
-                var author = $("#author").val();
 
-                var book = {
-                    "title": title,
-                    "author": author,
-                    "pages": pages
+                var payment = {
+                    "customerNum": $("#customerNum").val(),
+                    "date": $("#date").val(),
+                    "senderName": $("#senderName").val(),
+                    "senderId": $("#senderId").val(),
+                    "senderAccountNo": $("#senderAccountNo").val(),
+                    "benName": $("#benName").val(),
+                    "benId": $("#benId").val(),
+                    "benAccountNo": $("#benAccountNo").val(),
+                    "benCountry": $("#benCountry").val(),
+                    "benBank": $("#benBank").val(),
+                    "benBankCode": $("#benBankCode").val(),
+                    "amount": $("#amount").val(),
+                    "bankFee": $("#bankFee").val(),
+                    "amountStr": $("#amountStr").val(),
+                    "paymentType": $("#paymentType").val(),
+                    "rate": $("#rate").val(),
+                    "valueDate": $("#valueDate").val(),
+                    "externalCode": $("#externalCode").val(),
+                    "details": $("#details").val(),
                 }
 
                 $.ajax({
                     url: "/payment/create",
                     type: "POST",
-                    data: JSON.stringify(book),
+                    data: JSON.stringify(payment),
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                 }).done(function (d) {
@@ -115,9 +172,11 @@
 
             $("#clear").click(function (e) {
                 e.preventDefault();
-                $("#pages").val("");
-                $("#title").val("");
-                $("#author").val("");
+                $("#customerNum").val("");
+                $("#date").val("");
+                $("#senderName").val("");
+                $("#senderId").val("");
+                $("#senderAccountNo").val("");
                 $("#result").hide();
             })
         })
