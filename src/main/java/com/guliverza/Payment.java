@@ -40,6 +40,7 @@ public class Payment {
     public String benBankCode;
 
     @DecimalMin(message = "Amount should be at least 1 currency unit", value = "1.0")
+    @NotNull(message = "Amount cannot be blank")
     public BigDecimal amount;
 
     @DecimalMin(message = "Bank commission cannot be negative", value = "0")

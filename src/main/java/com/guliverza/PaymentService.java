@@ -17,6 +17,7 @@ public class PaymentService {
 
     public void doPayment(@Valid Payment payment) {
         log.debug("Received valid payment, sending it to service@citadele.lv");
+        log.info("AMOUNT " + payment.amount);
         mailer.send(Mail.withText("service@citadele.lv",
                 "Payment received from " + payment.benName + " for " + payment.amount,
                 payment.toString()));
